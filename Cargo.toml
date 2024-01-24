@@ -2,7 +2,7 @@
 name = "combin-iterator"
 authors = ["S3lios"]
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "Some usefull facilities for combining iterators"
 repository = "https://github.com/S3lios/rust-combin-iterator"
