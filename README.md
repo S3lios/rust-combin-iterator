@@ -20,26 +20,10 @@ fn main() {
     // Use the altern! macro for alternating iteration
     let altern_iter = altern!(vec1.iter(), vec2.iter(), vec3.iter());
 
-    // Use the zip! macro for zipping iteration
-    let zip_iter = zip!(vec1.iter(), vec2.iter(), vec3.iter());
-
-    // Use the chain! macro for chaining iteration
-    let chain_iter = chain!(vec1.iter(), vec2.iter(), vec3.iter());
-
     // Iterate over the elements
     for element in altern_iter {
-        println!("{}", element);
-    }
-
-    // Iterate over the zipped elements
-    for (a, b, c) in zip_iter {
-        println!("{} | {} | {}", a, b, c);
-    }
-
-    // Iterate over the chained elements
-    for element in chain_iter {
-        println!("{}", element);
-    }
+        println!("{}", element); 
+    } // Print: 1 2 3 5 6 7 8 9
 }
 ```
 
