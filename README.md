@@ -12,7 +12,7 @@ Note: This crate is currently in development, and only a few features are yet av
 rust
 ```
 Copy code
-use combin_iterator::{altern, zip, chain};
+use combin_iterator::{altern};
 
 fn main() {
     let vec1 = vec![1, 4, 7, 9];
