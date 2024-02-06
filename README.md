@@ -9,10 +9,8 @@ Round-Robin Alternation: Use the Altern iterator to alternate between elements p
 Note: This crate is currently in development, and only a few features are yet available.
 
 ## Usage
-rust
-```
-Copy code
-use combin_iterator::{altern};
+```rust
+use combin_iterator::altern;
 
 fn main() {
     let vec1 = vec![1, 4, 7, 9];
@@ -24,7 +22,7 @@ fn main() {
 
     // Iterate over the elements
     for element in altern_iter {
-        println!("{}", element); 
+        println!("{}", element);
     } // Print: 1 2 3 5 6 7 8 9
 }
 ```

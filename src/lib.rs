@@ -1,4 +1,4 @@
-pub mod alternate_iterator;
+pub mod iterators;
 
 #[macro_use]
 pub mod macros;
