@@ -25,7 +25,7 @@
 /// let vec3 = vec![3, 6, 8];
 /// let iter = {
 ///    let capacity = 1 + (1 + (1 + 0));
-///    let mut vec_altern = combin_iterator::iterators::VecAltern::with_capacity(
+///    let mut vec_altern = combin_iterator::altern::VecAltern::with_capacity(
 ///        capacity,
 ///    );
 ///    vec_altern.add(vec1.iter());
@@ -41,7 +41,7 @@ macro_rules! altern {
     ($($params:expr $(,)?)*) => {
         {
             let capacity = $crate::count_exprs!($($params),*);
-            let mut vec_altern = $crate::iterators::VecAltern::with_capacity(capacity);
+            let mut vec_altern = $crate::altern::VecAltern::with_capacity(capacity);
             $(
                 vec_altern.add($params);
             )*

@@ -2,7 +2,7 @@
 extern crate test;
 use test::{Bencher, bench::black_box};
 
-use combin_iterator::iterators::BiAltern;
+use combin_iterator::altern::BiAltern;
 
 #[bench]
 fn create_100000x2(b: &mut Bencher) {

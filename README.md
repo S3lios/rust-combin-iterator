@@ -29,9 +29,9 @@ fn main() {
 
 ## Installation
 Add the following dependency to your Cargo.toml:
-```
+```t
 [dependencies]
-combin-iterator = "0.1.0"
+combin-iterator = "0.2.0"
 ```
 
 ## License

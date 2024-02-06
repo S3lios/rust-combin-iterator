@@ -7,13 +7,13 @@
 //! To use `BiAltern`, create a new instance with `BiAltern::new(Iterator<Item>, Iterator<Item>)`, or
 //! from an `Iterable<Item>`, use `Iterable<Item>::altern_with(Iterable<Item>)`.
 //! The `next` method will then yield elements from the 2 iterators in a round-robin fashion until both iterators are exhausted.
-//! `BiAltern`is more complete than `crate::iterators::VecAltern`, and implements `core::iter::traits::exact_size::ExactSizeIterator` if both
+//! `BiAltern`is more complete than `crate::altern::VecAltern`, and implements `core::iter::traits::exact_size::ExactSizeIterator` if both
 //! iterators implement it. Also, if both additionally implement `DoubleEndedIterator`, then so does `BiAltern`.
 //!
 //! ## Examples
 //!
 //! ```rust
-//! use combin_iterator::iterators::BiAltern;
+//! use combin_iterator::altern::BiAltern;
 //! let vec1 = vec![1, 3, 5, 6];
 //! let vec2 = vec![2, 4];
 //!
@@ -24,14 +24,61 @@
 //!
 //!
 //! // You can also build it in a line thanks to the trait:
-//! use combin_iterator::iterators::AlternWith;
+//! use combin_iterator::altern::AlternWith;
 //! let iter = vec1.iter().altern_with(vec2.iter());
 //!
 //! assert_eq!(iter.collect::<Vec<_>>(), vec![&1, &2, &3, &4, &5, &6]);
 //! ```
+//! ### Common mistake
+//! `BiAltern` like `VecAltern`can be used to iter over more than 2 iterable by combining them with each other,
+//! but the number of iterable must be a power of 2. Otherwise the number of pass on each iterable will not be equal (but maybe it is waht you want).
+//! And even if there is a number of iterable is a number of two, the order need to be correct to have the result expected.
+//!
+//! For exemple:
+//! ```
+//! use combin_iterator::altern::BiAltern;
+//! let vec1 = vec![1, 1, 1, 1];
+//! let vec2 = vec![2, 2];
+//! let vec3 = vec![3, 3, 3];
+//!
+//! // Here, `iter` will NOT be equivalent to
+//! // vec![true, true, false, true ,true, false, true, false, true],
+//! // but instead to vec![true, false, true, false, true, false, true, true, true].
+//! // We alternate between BiAltern(vec1.iter(), vec2.iter()) and vec3.iter(),
+//! // not between vec1.iter(), vec2.iter() and vec3.iter() at the same level.
+//! let iter = BiAltern::new(BiAltern::new(vec1.iter(), vec2.iter()), vec3.iter());
+//! assert_ne!(iter.collect::<Vec<_>>(), vec![&1, &2, &3, &1, &2, &3, &1, &3, &1]);
+//!
+//! let iter = BiAltern::new(BiAltern::new(vec1.iter(), vec2.iter()), vec3.iter());
+//! assert_eq!(iter.collect::<Vec<_>>(), vec![&1, &3, &2, &3, &1, &3, &2, &1, &1]);
+//!
+//! // For the exact same reason:
+//! use combin_iterator::altern::AlternWith;
+//! let iter = vec1.iter().altern_with(vec2.iter()).altern_with(vec3.iter());
+//! assert_ne!(iter.collect::<Vec<_>>(), vec![&1, &2, &3, &1, &2, &3, &1, &3, &1]);
+//!
+//! let iter = vec1.iter().altern_with(vec2.iter()).altern_with(vec3.iter());
+//! assert_eq!(iter.collect::<Vec<_>>(), vec![&1, &3, &2, &3, &1, &3, &2, &1, &1]);
+//!
+//! // Now if we have 4 vec than we want to iterate over, we can at the same level:
+//! let vec1 = vec![1, 1];
+//! let vec2 = vec![2, 2];
+//! let vec3 = vec![3, 3];
+//! let vec4 = vec![4, 4];
+//!
+//! // Notice: Don't use `altern_with`, otherwise they will never be at the same level, and the last iter will always be iter over one time of two.
+//! let iter = BiAltern::new(BiAltern::new(vec1.iter(), vec2.iter()), BiAltern::new(vec3.iter(), vec4.iter()));
+//!
+//! // Here, the order on wich we will iterate is: vec1.iter() -> vec3.iter() -> vec2.iter() -> vec4.iter() -> vec1.iter() -> ...
+//! assert_eq!(iter.collect::<Vec<_>>(), vec![&1, &3, &2, &4, &1, &3, &2, &4]);
+//!
+//! // If you want it to be vec1.iter() -> vec2.iter() -> vec3.iter() -> vec4.iter() -> vec1.iter() -> ...,
+//! // then you should construct it like this:
+//! let iter = BiAltern::new(BiAltern::new(vec1.iter(), vec3.iter()), BiAltern::new(vec2.iter(), vec4.iter()));
+//! assert_eq!(iter.collect::<Vec<_>>(), vec![&1, &2, &3, &4, &1, &2, &3, &4]);
+//! ```
 //!
 //! ## Notes
-
 
 pub trait AlternWith<T1 : Iterator<Item = A>, A> {
     fn altern_with<T2: Iterator<Item = A>>(self : Self, other: T2) -> BiAltern<T1, T2, A>

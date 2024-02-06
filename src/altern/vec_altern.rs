@@ -11,7 +11,7 @@
 //! ## Examples
 //!
 //! ```rust
-//! use combin_iterator::iterators::VecAltern;
+//! use combin_iterator::altern::VecAltern;
 //! let vec1 = vec![1, 4, 7, 9];
 //! let vec2 = vec![2, 5];
 //! let vec3 = vec![3, 6, 8];
@@ -61,7 +61,7 @@ impl<'a, A> VecAltern<'a, A> {
         }
     }
 
-    // Prepare the capacity, like Vec::with_capacity does.
+    // Prepare the capacity, like `vec::with_capacity` does.
     pub fn with_capacity(capacity : usize) -> Self {
         Self {
             iters: Vec::with_capacity(capacity),
