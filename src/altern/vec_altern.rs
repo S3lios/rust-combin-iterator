@@ -41,10 +41,7 @@
 //! - The `altern!` macro provides a convenient way to create an `Altern` iterator with a cleaner syntax, and
 //!   a little performance optimization (with the function: `with_capacity`, like in `Vec`). If you know at
 //!   compile time how many iter you will altern between, then use the `altern!` macro.
-//! - For any concerns related to stability, bug reports, or feature requests, please refer to the crate's
-//!   documentation or contact the crate maintainers for support.
-//! - If you think you find a bug, don't hesitate to contact the crate maintaines. This crate is still in development,
-//!   and while we're doing our best to make sure there aren't any bugs, it's possible that something has missed us.
+
 
 /// Struct to altern between several iterator
 pub struct VecAltern<'a, A> {

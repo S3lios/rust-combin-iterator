@@ -5,8 +5,8 @@
 //! ## Usage
 //!
 //! To use `BiAltern`, create a new instance with `BiAltern::new(Iterator<Item>, Iterator<Item>)`, or
-//! from an `Iterable<Item>`, use `Iterable<Item>::altern_with(Iterable<Item>)`.
-//! The `next` method will then yield elements from the 2 iterators in a round-robin fashion until both iterators are exhausted.
+//! from an `Iterable<Item>`, use `Iterable<Item>::altern_with(Iterable<Item>)`. <br/>
+//! The `next` method will then yield elements from the 2 iterators in a round-robin fashion until both iterators are exhausted.<br/>
 //! `BiAltern`is more complete than `crate::altern::VecAltern`, and implements `core::iter::traits::exact_size::ExactSizeIterator` if both
 //! iterators implement it. Also, if both additionally implement `DoubleEndedIterator`, then so does `BiAltern`.
 //!
@@ -32,9 +32,9 @@
 //! ### Common mistake
 //! `BiAltern` like `VecAltern`can be used to iter over more than 2 iterable by combining them with each other,
 //! but the number of iterable must be a power of 2. Otherwise the number of pass on each iterable will not be equal (but maybe it is waht you want).
-//! And even if there is a number of iterable is a number of two, the order need to be correct to have the result expected.
+//! And even if the number of iterable is a number of two, the order need to be correct to have the result expected.
 //!
-//! For exemple:
+//! For example:
 //! ```
 //! use combin_iterator::altern::BiAltern;
 //! let vec1 = vec![1, 1, 1, 1];
@@ -77,8 +77,7 @@
 //! let iter = BiAltern::new(BiAltern::new(vec1.iter(), vec3.iter()), BiAltern::new(vec2.iter(), vec4.iter()));
 //! assert_eq!(iter.collect::<Vec<_>>(), vec![&1, &2, &3, &4, &1, &2, &3, &4]);
 //! ```
-//!
-//! ## Notes
+
 
 /// Trait to convert to a BiAltern iterator
 /// Implemented on Iterator

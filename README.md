@@ -40,10 +40,11 @@ fn main() {
 
 
 ## Installation
+
 Add the following dependency to your Cargo.toml:
 ```text
 [dependencies]
-combin-iterator = "0.2.0"
+combin-iterator = "0.2.1"
 ```
 
 ## License
@@ -51,5 +52,11 @@ This project is licensed under the MIT License or Apache 2.0 - see the LICENSE f
 
 ## Contribution
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
+
+## Notes
+- For any concerns related to stability, bug reports, or feature requests, please refer to the crate's
+   documentation or contact the crate maintainers for support.
+- If you think you find a bug, don't hesitate to contact the crate maintaines. This crate is still in development,
+   and while we're doing our best to make sure there aren't any bugs, it's possible that something has missed us.
 
 Happy Iterating with combin-iterator!
