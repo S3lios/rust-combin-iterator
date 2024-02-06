@@ -11,6 +11,7 @@ Note: This crate is currently in development, and only a few features are yet av
 ## Usage
 ```rust
 use combin_iterator::altern;
+use combin_iterator::altern::AlternWith;
 
 fn main() {
     let vec1 = vec![1, 4, 7, 9];
@@ -24,12 +25,20 @@ fn main() {
     for element in altern_iter {
         println!("{}", element);
     } // Print: 1 2 3 5 6 7 8 9
+
+    // Or use the AlternWith trait (i.e. combin_iterator::altern::BiAltern)
+    let trait_iter = vec1.iter().altern_with(vec2.iter());
+
+    // Iterate over the elements
+    for element in trait_iter {
+        println!("{}", element);
+    } // Print: 1 2 4 5 7 9
 }
 ```
 
 ## Installation
 Add the following dependency to your Cargo.toml:
-```t
+```text
 [dependencies]
 combin-iterator = "0.2.0"
 ```

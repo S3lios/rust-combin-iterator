@@ -80,7 +80,11 @@
 //!
 //! ## Notes
 
+/// Trait to convert to a BiAltern iterator
+/// Implemented on Iterator
 pub trait AlternWith<T1 : Iterator<Item = A>, A> {
+
+    /// Create the BiAltern, with self and an other iterator
     fn altern_with<T2: Iterator<Item = A>>(self : Self, other: T2) -> BiAltern<T1, T2, A>
     where
         Self: Sized;
@@ -94,6 +98,7 @@ impl<T1 : Iterator<Item = A>, A> AlternWith<T1, A> for T1 {
     }
 }
 
+/// BiAltern struct, to altern between 2 iterator.
 pub struct BiAltern<Iter1 : Iterator, Iter2 : Iterator, Item>
 where
     Iter1: Iterator<Item = Item>,

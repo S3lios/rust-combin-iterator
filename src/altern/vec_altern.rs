@@ -46,7 +46,7 @@
 //! - If you think you find a bug, don't hesitate to contact the crate maintaines. This crate is still in development,
 //!   and while we're doing our best to make sure there aren't any bugs, it's possible that something has missed us.
 
-
+/// Struct to altern between several iterator
 pub struct VecAltern<'a, A> {
     iters: Vec<Box<dyn Iterator<Item = A> + 'a>>,
     current: usize,
@@ -61,7 +61,7 @@ impl<'a, A> VecAltern<'a, A> {
         }
     }
 
-    // Prepare the capacity, like `vec::with_capacity` does.
+    /// Prepare the capacity, like `vec::with_capacity` does.
     pub fn with_capacity(capacity : usize) -> Self {
         Self {
             iters: Vec::with_capacity(capacity),
