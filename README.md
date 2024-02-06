@@ -44,7 +44,7 @@ fn main() {
 Add the following dependency to your Cargo.toml:
 ```text
 [dependencies]
-combin-iterator = "0.2.1"
+combin-iterator = "0.2.2"
 ```
 
 ## License
