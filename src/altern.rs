@@ -2,11 +2,11 @@
 //!
 //! ## When to use what ?
 //!
-//! - `BiAltern`is the most efficient itterator here, in terme of performance, for 2 iterable.<br/>
+//! - `BiAltern` is the most efficient iterator here, in terme of performance, for 2 iterable.<br/>
 //!    But, if you want to traverse more than 2 iterator, is drawback is that it require some reflexion, and manipulation to maybe
 //!    create the iterator that you want (see the section `Common Mistake` in the module `bi_altern`). <br/>
 //!    Futher more, you need to know the number of iterator at compile time for use this one.
-//!    He also implement the `std::iter::traits::ExactSizeIterator` and ``std::iter::traits::DoubleEndedIterator` traits if possible.
+//!    He also implement the `std::iter::traits::ExactSizeIterator` and `std::iter::traits::DoubleEndedIterator` traits if possible.
 //! - `VecAltern` is a little less time perfomant iterator (but still good enough for the majority of usage)`, but more flexible.
 //!    You can easily iterate over as many iterator you want, and add them at runtime, and during the iteration.
 //!
