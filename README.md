@@ -6,7 +6,7 @@ Combinator Macros: Use convenient macros to combine multiple iterators and creat
 
 Round-Robin Alternation: Use the Altern iterator to alternate between elements produced by multiple iterators in a round-robin fashion.
 
-Note: This crate is currently in development, and only a few features are yet available.
+Note: This crate is currently in development, and only little features are yet available.
 
 ## Usage
 ```rust
@@ -35,6 +35,9 @@ fn main() {
     } // Print: 1 2 4 5 7 9
 }
 ```
+
+## Changelog
+
 
 ## Installation
 Add the following dependency to your Cargo.toml:
